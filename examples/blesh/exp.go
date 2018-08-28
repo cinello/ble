@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/go-ble/ble"
+	"github.com/cinello/ble"
 )
 
 func explore(cln ble.Client, p *ble.Profile) error {

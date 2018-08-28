@@ -5,10 +5,10 @@ import (
 	"io"
 	"log"
 
-	"github.com/go-ble/ble"
-	"github.com/go-ble/ble/linux/att"
-	"github.com/go-ble/ble/linux/gatt"
-	"github.com/go-ble/ble/linux/hci"
+	"github.com/cinello/ble"
+	"github.com/cinello/ble/linux/att"
+	"github.com/cinello/ble/linux/gatt"
+	"github.com/cinello/ble/linux/hci"
 	"github.com/pkg/errors"
 )
 

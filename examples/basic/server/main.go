@@ -7,9 +7,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/go-ble/ble"
-	"github.com/go-ble/ble/examples/lib"
-	"github.com/go-ble/ble/examples/lib/dev"
+	"github.com/cinello/ble"
+	"github.com/cinello/ble/examples/lib"
+	"github.com/cinello/ble/examples/lib/dev"
 	"github.com/pkg/errors"
 )
 
