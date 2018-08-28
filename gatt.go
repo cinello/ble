@@ -52,6 +52,17 @@ func Stop() error {
 	return defaultDevice.Stop()
 }
 
+// Advertise advertises a specified set of data, passed with an Advertisement interface.
+// It tries to fit the UUIDs in the advertising packet as much as possible.
+// If name doesn't fit in the advertising packet, it will be put in scan response.
+func Advertise(ctx context.Context, adv Advertisement) error {
+	if defaultDevice == nil {
+		return ErrDefaultDevice
+	}
+	defer untrap(trap(ctx))
+	return defaultDevice.Advertise(ctx, adv)
+}
+
 // AdvertiseNameAndServices advertises device name, and specified service UUIDs.
 // It tres to fit the UUIDs in the advertising packet as much as possi
 // If name doesn't fit in the advertising packet, it will be put in scan response.
