@@ -13,17 +13,17 @@ import (
 )
 
 // NewDevice returns the default HCI device.
-func NewDevice() (*Device, error) {
-	return NewDeviceWithName("Gopher")
+func NewDevice(opts ...hci.Option) (*Device, error) {
+	return NewDeviceWithName("Gopher", opts...)
 }
 
 // NewDeviceWithName returns the default HCI device.
-func NewDeviceWithName(name string) (*Device, error) {
-	return NewDeviceWithNameAndHandler(name, nil)
+func NewDeviceWithName(name string, opts ...hci.Option) (*Device, error) {
+	return NewDeviceWithNameAndHandler(name, nil, opts...)
 }
 
-func NewDeviceWithNameAndHandler(name string, handler ble.NotifyHandler) (*Device, error) {
-	dev, err := hci.NewHCI()
+func NewDeviceWithNameAndHandler(name string, handler ble.NotifyHandler, opts ...hci.Option) (*Device, error) {
+	dev, err := hci.NewHCI(opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "can't create hci")
 	}

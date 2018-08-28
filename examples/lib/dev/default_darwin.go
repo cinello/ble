@@ -6,6 +6,6 @@ import (
 )
 
 // DefaultDevice ...
-func DefaultDevice() (d ble.Device, err error) {
-	return darwin.NewDevice()
+func DefaultDevice(opts ...hci.Option) (d ble.Device, err error) {
+	return darwin.NewDevice(opts)
 }

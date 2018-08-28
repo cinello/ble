@@ -3,9 +3,10 @@ package dev
 import (
 	"github.com/cinello/ble"
 	"github.com/cinello/ble/linux"
+	"github.com/cinello/ble/linux/hci"
 )
 
 // DefaultDevice ...
-func DefaultDevice() (d ble.Device, err error) {
-	return linux.NewDevice()
+func DefaultDevice(opts ...hci.Option) (d ble.Device, err error) {
+	return linux.NewDevice(opts...)
 }
