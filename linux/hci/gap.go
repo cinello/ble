@@ -71,7 +71,7 @@ func (h *HCI) AdvertiseAdv(a ble.Advertisement) error {
 	}
 
 	if a.ManufacturerData() != nil {
-		manufacuturerData := adv.ManufacturerData(1337, a.ManufacturerData())
+		manufacuturerData := adv.ManufacturerData(0xffff, a.ManufacturerData())
 		switch {
 		case ad.Append(manufacuturerData) == nil:
 		case sr.Append(manufacuturerData) == nil:
