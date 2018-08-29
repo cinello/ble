@@ -2,6 +2,7 @@ package hci
 
 import (
 	"context"
+	"encoding/binary"
 	"fmt"
 	"net"
 	"time"
@@ -70,8 +71,9 @@ func (h *HCI) AdvertiseAdv(a ble.Advertisement) error {
 	case sr.Append(adv.ShortName(a.LocalName())) == nil:
 	}
 
-	if a.ManufacturerData() != nil {
-		manufacuturerData := adv.ManufacturerData(0xffff, a.ManufacturerData())
+	if a.ManufacturerData() != nil && len(a.ManufacturerData()) >= 2 {
+		id := binary.BigEndian.Uint16(a.ManufacturerData()[0:2])
+		manufacuturerData := adv.ManufacturerData(id, a.ManufacturerData()[2:])
 		switch {
 		case ad.Append(manufacuturerData) == nil:
 		case sr.Append(manufacuturerData) == nil:
